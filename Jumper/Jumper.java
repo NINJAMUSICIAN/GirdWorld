@@ -12,6 +12,18 @@ class Jumper extends Bug {
 		this.jumps = jumps;
 	}
 
+	public void jump(){
+		Location current = getLocation();
+		newLocation nextLocation = current.adjacentLocation(getDirection());
+		Location afterNext = nextLocation.adjacentLocation(getDirection());
+
+		if(canJump(afterNext)){
+			moveTo(afterNext);
+		}else{
+			turn();
+		}	
+	}
+
 	public void act(){
 		
 	}
